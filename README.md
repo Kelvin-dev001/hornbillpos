@@ -36,3 +36,17 @@ npm run build      # production build check
 
 ## Social media files
 Approved weekly assets go in `public/media/YYYY-Www/`, served at `https://pos.hornbilltech.co.ke/media/...` for Metricool (master prompt §54).
+
+## Photos
+Real pharmacy photos go in `public/photos/` with these exact names (`.jpg`, `.webp` or `.png`). Each slot appears on the site only once its file exists:
+
+| File | Where it shows |
+|---|---|
+| `counter` | Homepage, "Made for busy Kenyan pharmacy counters" |
+| `owner` | Homepage, "When you're not at the counter" |
+| `shelves` | Pharmacy POS guide, stock section |
+| `setup` | Hardware page |
+| `training` | Homepage setup steps, Support, How it works |
+| `team` | About page |
+
+Landscape 3:2, at least 2400 × 1600 px, under 2 MB each. Next.js resizes and compresses them automatically.

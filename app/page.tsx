@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { og } from "@/lib/site";
 import { CalendarClock, PackageX, Receipt, Smartphone, MessageSquareText, Store, UserCog, Wallet, WifiOff, ShieldCheck, Check, Printer, ScanBarcode, Monitor, TabletSmartphone, Tag, Archive, ArrowRight, HandCoins } from "lucide-react";
 import Device from "@/components/Device";
+import Photo, { photoSrc } from "@/components/Photo";
 import { CtaPair, WhatsAppButton } from "@/components/CTA";
 import Faq from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
@@ -68,6 +69,23 @@ export default function Home() {
         </div>
       </section>
 
+      {photoSrc("counter") && (
+        <section className="band">
+          <div className="wrap split">
+            <div data-reveal><Photo name="counter" className="photo photo-wide" /></div>
+            <div data-reveal>
+              <span className="pill">At the counter</span>
+              <h2 style={{ marginTop: 16 }}>Made for busy Kenyan pharmacy counters.</h2>
+              <ul className="ticks">
+                <li><Check size={20} aria-hidden /><span>Scan or search a product, add it, take payment.</span></li>
+                <li><Check size={20} aria-hidden /><span>Hold a sale while a customer decides, and serve the next one.</span></li>
+                <li><Check size={20} aria-hidden /><span>M-Pesa payment prompt on the customer's phone.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 3+4 SOLUTION / AT A GLANCE */}
       <section className="dark">
         <div className="wrap split">
@@ -128,9 +146,13 @@ export default function Home() {
       {/* 8+10 AWAY */}
       <section className="dark-glow">
         <div className="wrap">
-          <div className="head" data-reveal>
-            <p className="eyebrow eyebrow-light">When you're not at the counter</p>
-            <h2>Know how your pharmacy is doing, wherever you are.</h2>
+          <div className={photoSrc("owner") ? "split" : ""} style={{ marginBottom: 48 }}>
+            <div className="head" data-reveal style={{ marginBottom: 0 }}>
+              <p className="eyebrow eyebrow-light">When you're not at the counter</p>
+              <h2>Know how your pharmacy is doing, wherever you are.</h2>
+              <p className="lead-light">The daily sales SMS, your reports on your phone or laptop, and every branch in one system.</p>
+            </div>
+            {photoSrc("owner") && <div data-reveal><Photo name="owner" className="photo photo-wide" /></div>}
           </div>
           <div className="grid g4">
             {[
@@ -234,6 +256,7 @@ export default function Home() {
             <h2>We set it up and stay with you.</h2>
             <p className="lead">No DIY. One team handles setup, your data, training and support.</p>
           </div>
+          {photoSrc("training") && <div data-reveal style={{ marginBottom: 32 }}><Photo name="training" className="photo photo-wide" sizes="(max-width: 1200px) 100vw, 1150px" /></div>}
           <ol className="steps" data-reveal>
             {STEPS.map(([t, d]) => <li key={t}><b>{t}</b><p>{d}</p></li>)}
           </ol>

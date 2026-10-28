@@ -3,6 +3,7 @@ import { og } from "@/lib/site";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Device from "@/components/Device";
+import Photo from "@/components/Photo";
 import Faq, { type QA } from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
 import JsonLd from "@/components/JsonLd";
@@ -53,6 +54,7 @@ export default function PharmacyPos() {
             <p>Pharmacies need more than a general shop system. Medicines come in batches with expiry dates, distributors work on LPOs and credit terms, and margins depend on catching expiring stock and supplier errors early.</p>
 
             <h2 id="stock">Pharmacy stock and inventory management</h2>
+            <Photo name="shelves" className="photo photo-wide" sizes="(max-width: 980px) 100vw, 780px" />
             <p>Good pharmacy inventory software should tell you three things at any moment: what you have, what's running low, and what it's worth. In Hornbill POS:</p>
             <ul>
               <li>Each product has a <b>reorder (alert) quantity</b>. When stock falls below it, Hornbill flags it in the low-stock report and the alert counter.</li>

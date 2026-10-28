@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { og } from "@/lib/site";
-import { Check } from "lucide-react";
+import { Check, Store, Monitor, Package, Printer, Settings2, Database, CalendarCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Faq, { type QA } from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
@@ -32,7 +32,27 @@ export default function Pricing() {
           ))}
         </div>
       </section>
-      <section style={{ background: "#fff" }}>
+      <section className="band">
+        <div className="wrap">
+          <div className="head" data-reveal><p className="eyebrow">What shapes your quote</p><h2>Six things we ask about</h2><p className="lead">So your quotation fits your pharmacy, not a generic package.</p></div>
+          <div className="grid g3">
+            {[[Store, "Outlets", "How many branches or locations you run."],
+              [Monitor, "Tills and users", "How many counters and staff will use Hornbill."],
+              [Package, "Products", "How many products we'll load for you, and in what format you keep them today."],
+              [Printer, "Hardware", "What you already have, and what you'd like us to supply and install."],
+              [Settings2, "Customisation", "Anything specific to how your pharmacy works, agreed in the scope."],
+              [Database, "Your data", "Moving over from paper, Excel or another system."]].map(([Icon, t, d]) => {
+              const I = Icon as typeof Store;
+              return <div className="card" key={t as string} data-reveal><span className="icon"><I size={24} aria-hidden /></span><h3>{t as string}</h3><p>{d as string}</p></div>;
+            })}
+          </div>
+          <div className="card" style={{ marginTop: 24, display: "flex", gap: 18, alignItems: "flex-start" }} data-reveal>
+            <span className="icon" style={{ flex: "none", marginBottom: 0 }}><CalendarCheck size={24} aria-hidden /></span>
+            <div><h3>Monthly or annual?</h3><p>Both are available. Paying annually works out cheaper than paying month by month.</p></div>
+          </div>
+        </div>
+      </section>
+      <section style={{ background: "var(--paper)" }}>
         <div className="wrap split">
           <div><h2>What the setup fee covers</h2><p className="lead">So it's clear what you're paying for.</p></div>
           <ul className="ticks">{["System configuration for your pharmacy", "Customisation agreed in your scope", "Loading your product list", "Deployment", "Hardware installation (if you take our hardware)", "Training for you and your staff", "Handover"].map((x) => <li key={x}><Check size={20} aria-hidden /><span>{x}</span></li>)}</ul>

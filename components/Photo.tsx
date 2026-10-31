@@ -4,15 +4,15 @@ import path from "node:path";
 
 /** Real pharmacy photo slot. Renders ONLY if /public/photos/<name>.(webp|jpg|jpeg|png) exists,
  *  so the live site never shows an empty box. Drop the file in and redeploy. */
-export const PHOTOS = {
-  counter: { alt: "Pharmacy attendant serving a customer at the counter", w: 2400, h: 1600 },
-  owner: { alt: "Pharmacy owner checking the business on a phone", w: 2400, h: 1600 },
-  shelves: { alt: "Pharmacy staff checking stock on the shelves", w: 2400, h: 1600 },
-  setup: { alt: "Pharmacy counter with POS hardware", w: 2400, h: 1600 },
-  training: { alt: "Hornbill team training pharmacy staff", w: 2400, h: 1600 },
+export const PHOTOS: Record<string, { alt: string; w: number; h: number; illustration?: boolean }> = {
+  counter: { alt: "Illustration: pharmacy attendant serving a customer, with the Hornbill POS counter screen", w: 1536, h: 1024, illustration: true },
+  owner: { alt: "Illustration: pharmacy owner checking the Hornbill dashboard on a laptop", w: 1536, h: 1024, illustration: true },
+  shelves: { alt: "Pharmacy staff checking stock on the shelves with a scanner and tablet", w: 2048, h: 1366 },
+  setup: { alt: "Illustration: pharmacy counter with POS hardware running Hornbill POS", w: 1536, h: 1024, illustration: true },
+  training: { alt: "Illustration: a trainer showing pharmacy staff the system", w: 1536, h: 1024, illustration: true },
   team: { alt: "The Hornbill team", w: 2400, h: 1600 },
-} as const;
-export type PhotoName = keyof typeof PHOTOS;
+};
+export type PhotoName = "counter" | "owner" | "shelves" | "setup" | "training" | "team";
 
 export function photoSrc(name: PhotoName): string | null {
   for (const ext of ["webp", "jpg", "jpeg", "png"]) {
@@ -28,6 +28,7 @@ export default function Photo({ name, className = "photo", sizes = "(max-width: 
   return (
     <figure className={className}>
       <Image src={src} alt={p.alt} width={p.w} height={p.h} sizes={sizes} priority={priority} />
+      {p.illustration && <figcaption className="photo-tag">Illustration</figcaption>}
     </figure>
   );
 }

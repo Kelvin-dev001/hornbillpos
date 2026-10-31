@@ -38,7 +38,7 @@ export default function Support() {
         </div>
       </section>
       <section className="band">
-        <div className={`wrap ${photoSrc("training") ? "split" : ""}`}>
+        <div className={`wrap ${photoSrc("setup") ? "split" : ""}`}>
           <div data-reveal>
             <p className="eyebrow">Getting help</p>
             <h2>Three steps when you need us</h2>
@@ -48,7 +48,7 @@ export default function Support() {
               <li><Wrench size={22} aria-hidden /><span><b>We sort it out.</b> We fix the issue or walk your team through it; hardware we supplied is repaired or replaced under warranty.</span></li>
             </ul>
           </div>
-          {photoSrc("training") && <div data-reveal><Photo name="training" className="photo photo-wide" /></div>}
+          {photoSrc("setup") && <div data-reveal><Photo name="setup" className="photo photo-wide" /></div>}
         </div>
       </section>
       <section>

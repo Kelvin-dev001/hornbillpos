@@ -218,3 +218,5 @@ section{padding:96px 0}
 .list-plain svg{color:var(--orange-700);margin-top:3px}
 .band{background:#fff}
 .kicker-num{font:800 44px/1 var(--display);color:var(--orange-700)}
+.photo{position:relative}
+.photo-tag{position:absolute;left:12px;bottom:12px;background:rgba(9,9,10,.72);color:#fff;font:700 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px}

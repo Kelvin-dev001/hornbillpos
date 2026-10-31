@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
 import Analytics from "@/components/Analytics";
 import Reveal from "@/components/Reveal";
+import ScrollProgress from "@/components/ScrollProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a className="skip" href="#main">Skip to content</a>
         <Header />
+        <ScrollProgress />
         <main id="main">{children}</main>
         <Footer />
         <StickyWhatsApp />

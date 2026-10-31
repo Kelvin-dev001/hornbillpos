@@ -25,17 +25,17 @@ export default function Home() {
       {/* 1 HERO */}
       <section className="hero dark-glow">
         <div className="wrap">
-          <p className="eyebrow eyebrow-light">Pharmacy POS & management system · Kenya</p>
-          <h1>Know your pharmacy <span className="g">at a glance.</span></h1>
-          <p className="lead-light">Sales, stock, expiry, LPOs and supplier balances in one system, so you always know where your pharmacy stands.</p>
-          <CtaPair code="WEB-HOME-HERO" dark />
-          <div className="trust" aria-label="Included">
+          <p className="eyebrow eyebrow-light hero-in" style={{ ["--i" as string]: 0 }}>Pharmacy POS & management system · Kenya</p>
+          <h1 className="hero-in" style={{ ["--i" as string]: 1 }}>Know your pharmacy <span className="g g-shine">at a glance.</span></h1>
+          <p className="lead-light hero-in" style={{ ["--i" as string]: 2 }}>Sales, stock, expiry, LPOs and supplier balances in one system, so you always know where your pharmacy stands.</p>
+          <div className="hero-in" style={{ ["--i" as string]: 3 }}><CtaPair code="WEB-HOME-HERO" dark /></div>
+          <div className="trust hero-in" style={{ ["--i" as string]: 4 }} aria-label="Included">
             <span><Check size={18} aria-hidden /> eTIMS integration</span>
             <span><Check size={18} aria-hidden /> M-Pesa payment prompt</span>
             <span><Check size={18} aria-hidden /> Works offline</span>
             <span><Check size={18} aria-hidden /> We set it up and train your team</span>
           </div>
-          <div className="hero-device">
+          <div className="hero-device hero-rise">
             <Device {...UI.stock} priority sizes="(max-width: 1200px) 100vw, 1150px" />
           </div>
         </div>
@@ -222,7 +222,7 @@ export default function Home() {
             <p className="eyebrow">How a pharmacy runs on Hornbill</p>
             <h2>From the distributor to your phone.</h2>
           </div>
-          <div className="flow" data-reveal>
+          <div className="flow flow-anim" data-reveal>
             {["Supplier", "LPO", "Purchase received", "Stock, batch & expiry", "Counter sale", "Payment", "Alerts", "Reports", "Owner"].map((s, i, a) => (
               <span key={s} style={{ display: "contents" }}><span>{s}</span>{i < a.length - 1 && <i aria-hidden>→</i>}</span>
             ))}

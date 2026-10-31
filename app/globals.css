@@ -220,3 +220,81 @@ section{padding:96px 0}
 .kicker-num{font:800 44px/1 var(--display);color:var(--orange-700)}
 .photo{position:relative}
 .photo-tag{position:absolute;left:12px;bottom:12px;background:rgba(9,9,10,.72);color:#fff;font:700 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px}
+
+/* ---------- motion (subtle; all disabled under prefers-reduced-motion) ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes riseIn{from{opacity:0;transform:translateY(40px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+@keyframes shine{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes ringPulse{0%{box-shadow:0 0 0 0 rgba(253,226,2,.55)}100%{box-shadow:0 0 0 14px rgba(253,226,2,0)}}
+@keyframes waPulse{0%{box-shadow:0 10px 30px rgba(9,9,10,.35),0 0 0 0 rgba(253,106,1,.55)}100%{box-shadow:0 10px 30px rgba(9,9,10,.35),0 0 0 16px rgba(253,106,1,0)}}
+@keyframes popIn{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+
+.page-enter{animation:pageIn .35s var(--ease) both}
+.hero-in{animation:fadeUp .7s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms + 60ms)}
+.hero-rise{animation:riseIn .9s var(--ease) both;animation-delay:.45s}
+.g-shine{background-size:150% 100%;animation:shine 5s ease-in-out infinite alternate}
+
+/* header: shadow once scrolled, animated nav underline */
+.site-header{transition:box-shadow .28s var(--ease),background .28s var(--ease)}
+body.is-scrolled .site-header{box-shadow:0 8px 24px rgba(0,0,0,.28);background:rgba(9,9,10,.97)}
+.scroll-progress{position:fixed;top:68px;left:0;right:0;height:3px;z-index:49;pointer-events:none}
+.scroll-progress div{height:100%;background:var(--casque);transform-origin:0 50%;transform:scaleX(0)}
+.nav a{position:relative;transition:background .16s var(--ease),color .16s var(--ease)}
+
+/* staggered reveals inside grids, steps and flows */
+.js .grid > [data-reveal]:nth-child(2){transition-delay:.08s}
+.js .grid > [data-reveal]:nth-child(3){transition-delay:.16s}
+.js .grid > [data-reveal]:nth-child(4){transition-delay:.24s}
+.js .grid > [data-reveal]:nth-child(5){transition-delay:.32s}
+.js .grid > [data-reveal]:nth-child(6){transition-delay:.4s}
+.js .steps li[data-reveal]:nth-child(2n){transition-delay:.08s}
+.js .flow-anim > span > span{opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.js .flow-anim.in > span > span{opacity:1;transform:none}
+.js .flow-anim.in > span:nth-child(1) > span{transition-delay:0s}
+.js .flow-anim.in > span:nth-child(2) > span{transition-delay:.08s}
+.js .flow-anim.in > span:nth-child(3) > span{transition-delay:.16s}
+.js .flow-anim.in > span:nth-child(4) > span{transition-delay:.24s}
+.js .flow-anim.in > span:nth-child(5) > span{transition-delay:.32s}
+.js .flow-anim.in > span:nth-child(6) > span{transition-delay:.4s}
+.js .flow-anim.in > span:nth-child(7) > span{transition-delay:.48s}
+.js .flow-anim.in > span:nth-child(8) > span{transition-delay:.56s}
+.js .flow-anim.in > span:nth-child(9) > span{transition-delay:.64s}
+.js .steps.in li::before,.js .steps li[data-reveal].in::before{animation:popIn .5s var(--ease) both}
+
+/* cards: gentle lift on hover */
+.card,.card-dark,.steps li{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease)}
+@media (hover:hover){
+  .card:hover,.steps li:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(9,9,10,.06),0 18px 40px rgba(9,9,10,.12)}
+  .card-dark:hover{transform:translateY(-4px);border-color:rgba(253,106,1,.45)}
+  .card:hover .icon,.card-dark:hover .icon{transform:rotate(-6deg) scale(1.06)}
+  .device:hover{transform:translateY(-3px)}
+  .photo:hover img{transform:scale(1.03)}
+  .btn-primary:hover{box-shadow:0 10px 24px rgba(253,106,1,.35)}
+}
+.icon{transition:transform .28s var(--ease)}
+.device{transition:transform .4s var(--ease)}
+.photo img{transition:transform .8s var(--ease)}
+
+/* product screens: the highlight ring pulses twice when it comes into view */
+.js [data-reveal].in .ring{animation:ringPulse 1.2s ease-out .5s 2}
+
+/* FAQ: smooth answer reveal */
+.faq details[open] p{animation:fadeUp .35s var(--ease) both}
+.faq summary::after{transition:transform .2s var(--ease)}
+.faq details[open] summary::after{transform:rotate(180deg)}
+
+/* sticky WhatsApp: three soft pulses after load to draw the eye, then still */
+.sticky-wa{animation:waPulse 1.6s ease-out 2.5s 3}
+
+/* mobile menu slides down */
+@media (max-width:980px){.nav.is-open{animation:fadeUp .25s var(--ease) both}}
+
+@media (prefers-reduced-motion:reduce){
+  .page-enter,.hero-in,.hero-rise,.g-shine,.sticky-wa,.nav.is-open,.faq details[open] p,.js [data-reveal].in .ring{animation:none !important}
+  .js .flow-anim > span > span{opacity:1;transform:none;transition:none}
+  .card,.card-dark,.steps li,.icon,.device,.photo img{transition:none}
+  .card:hover,.card-dark:hover,.steps li:hover,.device:hover{transform:none}
+  .photo:hover img{transform:none}
+  .scroll-progress{display:none}
+}

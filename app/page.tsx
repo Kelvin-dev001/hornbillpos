@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { og } from "@/lib/site";
 import { CalendarClock, PackageX, Receipt, Smartphone, MessageSquareText, Store, UserCog, Wallet, WifiOff, ShieldCheck, Check, Printer, ScanBarcode, Monitor, TabletSmartphone, Tag, Archive, ArrowRight, HandCoins } from "lucide-react";
 import Device from "@/components/Device";
+import HeroIcons from "@/components/HeroIcons";
 import Photo, { photoSrc } from "@/components/Photo";
 import { CtaPair, WhatsAppButton } from "@/components/CTA";
 import Faq from "@/components/Faq";
@@ -23,12 +24,13 @@ export default function Home() {
   return (
     <>
       {/* 1 HERO */}
-      <section className="hero dark-glow">
+      <section className="hero hero-cream">
+        <HeroIcons motion />
         <div className="wrap">
-          <p className="eyebrow eyebrow-light hero-in" style={{ ["--i" as string]: 0 }}>Pharmacy POS & management system · Kenya</p>
+          <p className="eyebrow hero-in" style={{ ["--i" as string]: 0 }}>Pharmacy POS & management system · Kenya</p>
           <h1 className="hero-in" style={{ ["--i" as string]: 1 }}>Know your pharmacy <span className="g g-shine">at a glance.</span></h1>
-          <p className="lead-light hero-in" style={{ ["--i" as string]: 2 }}>Sales, stock, expiry, LPOs and supplier balances in one system, so you always know where your pharmacy stands.</p>
-          <div className="hero-in" style={{ ["--i" as string]: 3 }}><CtaPair code="WEB-HOME-HERO" dark /></div>
+          <p className="lead hero-in" style={{ ["--i" as string]: 2 }}>Sales, stock, expiry, LPOs and supplier balances in one system, so you always know where your pharmacy stands.</p>
+          <div className="hero-in" style={{ ["--i" as string]: 3 }}><CtaPair code="WEB-HOME-HERO" /></div>
           <div className="trust hero-in" style={{ ["--i" as string]: 4 }} aria-label="Included">
             <span><Check size={18} aria-hidden /> eTIMS integration</span>
             <span><Check size={18} aria-hidden /> M-Pesa payment prompt</span>

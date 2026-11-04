@@ -1,4 +1,5 @@
 import { Pill, Tablets, PillBottle, Syringe, Cross, Stethoscope, Thermometer, BriefcaseMedical, FlaskConical, Bandage, Receipt, ScanBarcode, Package, Smartphone } from "lucide-react";
+import HeroParallax from "./HeroParallax";
 
 /**
  * Decorative pharmacy icon field behind the hero copy.
@@ -31,16 +32,15 @@ export default function HeroIcons({ motion = false }: { motion?: boolean }) {
   return (
     <div className={motion ? "hero-icons is-moving" : "hero-icons"} aria-hidden="true">
       {ICONS.map(([Icon, x, y, s, r, d, dl], i) => (
-        <span
-          key={i}
-          style={{
-            left: `${x}%`, top: `${y}%`,
-            ["--r" as string]: `${r}deg`, ["--d" as string]: `${d}s`, ["--dl" as string]: `${dl}s`,
-          }}
-        >
-          <Icon size={s} strokeWidth={1.5} />
+        // outer span: position + scroll parallax (bigger icons sit "closer" and move more)
+        <span key={i} style={{ left: `${x}%`, top: `${y}%`, ["--k" as string]: (s / 52) * 0.45 }}>
+          {/* inner: centring, rotation and the slow drift */}
+          <i style={{ ["--r" as string]: `${r}deg`, ["--d" as string]: `${d}s`, ["--dl" as string]: `${dl}s` }}>
+            <Icon size={s} strokeWidth={1.5} />
+          </i>
         </span>
       ))}
+      {motion && <HeroParallax />}
     </div>
   );
 }

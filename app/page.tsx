@@ -4,6 +4,7 @@ import { og } from "@/lib/site";
 import { CalendarClock, PackageX, Receipt, Smartphone, MessageSquareText, Store, UserCog, Wallet, WifiOff, ShieldCheck, Check, Printer, ScanBarcode, Monitor, TabletSmartphone, Tag, Archive, ArrowRight, HandCoins } from "lucide-react";
 import Device from "@/components/Device";
 import HeroIcons from "@/components/HeroIcons";
+import ScrollTour from "@/components/ScrollTour";
 import Photo, { photoSrc } from "@/components/Photo";
 import { CtaPair, WhatsAppButton } from "@/components/CTA";
 import Faq from "@/components/Faq";
@@ -88,22 +89,8 @@ export default function Home() {
         </section>
       )}
 
-      {/* 3+4 SOLUTION / AT A GLANCE */}
-      <section className="dark">
-        <div className="wrap split">
-          <div data-reveal>
-            <p className="eyebrow eyebrow-light">The Hornbill way</p>
-            <h2>One system, from the counter to the back office.</h2>
-            <p className="lead-light">Hornbill POS runs your sales, stock, purchasing and reports together, and shows you, the owner, what it all adds up to.</p>
-            <div className="callouts">
-              <div className="callout"><b>Stock value</b><span>at cost and at selling price</span></div>
-              <div className="callout"><b>Profit estimate</b><span>on the stock you hold</span></div>
-              <div className="callout"><b>15 reports</b><span>daily sales to profit & loss</span></div>
-            </div>
-          </div>
-          <div data-reveal><Device {...UI.dashboard} caption="Dashboard overview: illustrative data" /></div>
-        </div>
-      </section>
+      {/* 3+4 SOLUTION: pinned product tour (screen changes as you scroll) */}
+      <ScrollTour />
 
       {/* 6 EXPIRY + STOCK */}
       <section id="expiry">
